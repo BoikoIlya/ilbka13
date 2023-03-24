@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.weaterapptesttask.data.WeatherRepository
 import com.example.weaterapptesttask.data.cloud.WeatherService
 import com.example.weaterapptesttask.databinding.ActivityMainBinding
+import com.example.weaterapptesttask.domain.WeatherInteractor
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.yandex.mapkit.Animation
 import com.yandex.mapkit.MapKitFactory
@@ -26,7 +27,7 @@ class MainActivity : AppCompatActivity() {
     //private val viewModel: MainViewModel by viewModels()
 
     @Inject
-    lateinit var repository: WeatherRepository
+    lateinit var interactor: WeatherInteractor
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         lifecycleScope.launch {
-            Log.d("tag", "${repository.fetchData(53.901962,53.901962)}")
+            Log.d("tag", "${interactor.fetchData(53.901962,53.901962)}")
         }
 
         BottomSheetBehavior.from(binding.bottomSheet).apply {

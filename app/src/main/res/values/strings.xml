@@ -19,4 +19,6 @@
     <string name="snow_showers_message">Snow showers slight and heavyt</string>
     <string name="thunderstorm_moderate_message">Thunderstorm: Slight or moderate</string>
     <string name="thunderstorm_hail_message">Thunderstorm with slight and heavy hail</string>
+    <string name="no_internet_message">No internet connection</string>
+    <string name="service_unavailable_message">Service unavailable</string>
 </resources>

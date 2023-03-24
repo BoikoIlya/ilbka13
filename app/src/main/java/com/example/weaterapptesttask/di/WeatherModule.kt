@@ -6,7 +6,9 @@ import com.example.weaterapptesttask.core.WeatherCodeHandler
 import com.example.weaterapptesttask.data.WeatherRepository
 import com.example.weaterapptesttask.data.cloud.WeatherDto
 import com.example.weaterapptesttask.data.cloud.WeatherService
+import com.example.weaterapptesttask.domain.ResponseHandler
 import com.example.weaterapptesttask.domain.WeatherData
+import com.example.weaterapptesttask.domain.WeatherInteractor
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -60,6 +62,14 @@ interface BindsWeatherModule{
 
     @Binds
     @ActivityScoped
-    fun bindTWeatherCodeHandler(obj: WeatherCodeHandler.Base): WeatherCodeHandler
+    fun bindWeatherCodeHandler(obj: WeatherCodeHandler.Base): WeatherCodeHandler
+
+    @Binds
+    @ActivityScoped
+    fun bindResponseHandler(obj: ResponseHandler.Base): ResponseHandler
+
+    @Binds
+    @ActivityScoped
+    fun bindWeatherInteractor(obj: WeatherInteractor.Base): WeatherInteractor
 
 }

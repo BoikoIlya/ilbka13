@@ -6,4 +6,6 @@ package com.example.weaterapptesttask.domain
 data class WeatherData(
     private val coordinates: String,
     private val weatherList: List<WeatherItem>
-)
+){
+
+}
