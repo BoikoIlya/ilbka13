@@ -1,4 +1,4 @@
-package com.example.weaterapptesttask
+package com.example.weaterapptesttask.di
 
 import android.app.Application
 import com.yandex.mapkit.MapKitFactory
@@ -7,6 +7,7 @@ import dagger.hilt.android.HiltAndroidApp
 /**
  * Created by HP on 23.03.2023.
  **/
+@HiltAndroidApp
 class App: Application() {
 
     override fun onCreate() {

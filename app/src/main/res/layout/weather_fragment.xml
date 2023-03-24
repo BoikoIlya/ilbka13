@@ -102,15 +102,29 @@
         app:layout_constraintTop_toTopOf="@+id/textView4" />
 
     <TextView
-        android:textColor="@color/black"
+        android:id="@+id/textView7"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="20dp"
-        android:textSize="@dimen/text_h2"
         android:text="Freezing Drizzle: Light and dense intensity"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_h2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:text="53.875, 27.5625"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_body1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

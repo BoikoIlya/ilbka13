@@ -5,7 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".MainActivity">
+    tools:context=".presentation.MainActivity">
+
+    <TextView
+        android:text="@string/click_str"
+        android:layout_gravity="top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <com.yandex.mapkit.mapview.MapView
         android:id="@+id/map"
@@ -66,7 +72,7 @@
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="07:00"
+                android:text="23.03\n07:00"
 
                 />
             <com.google.android.material.tabs.TabItem

@@ -1,27 +1,32 @@
-package com.example.weaterapptesttask
+package com.example.weaterapptesttask.presentation
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
+import android.util.Log
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.WindowCompat
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import android.view.Menu
-import android.view.MenuItem
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.viewModelScope
+import com.example.weaterapptesttask.data.WeatherRepository
+import com.example.weaterapptesttask.data.cloud.WeatherService
 import com.example.weaterapptesttask.databinding.ActivityMainBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.yandex.mapkit.Animation
-import com.yandex.mapkit.MapKit
 import com.yandex.mapkit.MapKitFactory
 import com.yandex.mapkit.geometry.Point
 import com.yandex.mapkit.map.CameraPosition
-import com.yandex.mapkit.mapview.MapView
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
+    //private val viewModel: MainViewModel by viewModels()
+
+    @Inject
+    lateinit var repository: WeatherRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +37,10 @@ class MainActivity : AppCompatActivity() {
         MapKitFactory.initialize(this);
 
         setContentView(binding.root)
+
+        lifecycleScope.launch {
+            Log.d("tag", "${repository.fetchData(53.901962,53.901962)}")
+        }
 
         BottomSheetBehavior.from(binding.bottomSheet).apply {
             peekHeight = 0
