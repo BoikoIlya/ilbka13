@@ -1,8 +1,7 @@
 package com.example.weaterapptesttask.weather.di
 
 import android.content.Context
-import android.widget.TableLayout
-import com.example.weaterapptesttask.core.ManagerResource
+import com.example.weaterapptesttask.core.ManageResources
 import com.example.weaterapptesttask.core.WeatherCodeHandler
 import com.example.weaterapptesttask.weather.data.WeatherRepository
 import com.example.weaterapptesttask.weather.data.cache.CoordinatesTempCache
@@ -13,7 +12,6 @@ import com.example.weaterapptesttask.weather.domain.WeatherData
 import com.example.weaterapptesttask.weather.domain.WeatherInteractor
 import com.example.weaterapptesttask.weather.domain.WeatherResult
 import com.example.weaterapptesttask.weather.presentation.*
-import com.google.android.material.tabs.TabLayout
 import com.yandex.mapkit.geometry.Point
 import dagger.Binds
 import dagger.Module
@@ -49,8 +47,8 @@ class WeatherModule {
 
     @Provides
     @ViewModelScoped
-    fun provideManagerResource(@ApplicationContext context: Context): ManagerResource{
-        return ManagerResource.Base(context)
+    fun provideManagerResource(@ApplicationContext context: Context): ManageResources{
+        return ManageResources.Base(context)
     }
 
     @Provides

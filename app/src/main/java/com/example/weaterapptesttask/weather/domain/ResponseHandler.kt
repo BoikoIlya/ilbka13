@@ -1,7 +1,7 @@
 package com.example.weaterapptesttask.weather.domain
 
 import com.example.weaterapptesttask.R
-import com.example.weaterapptesttask.core.ManagerResource
+import com.example.weaterapptesttask.core.ManageResources
 import java.net.UnknownHostException
 import javax.inject.Inject
 
@@ -13,7 +13,7 @@ interface ResponseHandler {
     fun handle(e: Exception): String
 
     class Base @Inject constructor(
-        private val managerResource: ManagerResource
+        private val managerResource: ManageResources
     ): ResponseHandler {
 
         override fun handle(e: Exception):String = managerResource.getString(

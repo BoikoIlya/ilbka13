@@ -1,7 +1,5 @@
 package com.example.weaterapptesttask.weather.presentation
 
-import com.example.weaterapptesttask.R
-import com.example.weaterapptesttask.core.ManagerResource
 import com.example.weaterapptesttask.weather.domain.WeatherData
 import com.example.weaterapptesttask.weather.domain.WeatherResult
 import javax.inject.Inject

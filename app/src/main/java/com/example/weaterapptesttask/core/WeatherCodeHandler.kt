@@ -11,7 +11,7 @@ interface WeatherCodeHandler {
     fun handle(code: Int): String
 
     class Base @Inject constructor(
-        private val managerResource: ManagerResource
+        private val managerResource: ManageResources
     ): WeatherCodeHandler{
 
         override fun handle(code: Int): String = managerResource.getString(

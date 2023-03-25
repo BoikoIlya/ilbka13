@@ -14,7 +14,7 @@ interface WeatherCommunication: CollectWeather {
 
     fun showUiState(state: WeatherUiState)
 
-    fun showWeather(tracks: WeatherData)
+    fun showWeather(data: WeatherData)
 
     class Base @Inject constructor(
         private val weatherStateCommunication: WeatherStateCommunication,
@@ -23,7 +23,7 @@ interface WeatherCommunication: CollectWeather {
 
         override fun showUiState(state: WeatherUiState) = weatherStateCommunication.map(state)
 
-        override fun showWeather(tracks: WeatherData) = weatherDataCommunication.map(tracks)
+        override fun showWeather(data: WeatherData) = weatherDataCommunication.map(data)
 
 
         override suspend fun collectState(
