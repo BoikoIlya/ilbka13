@@ -10,8 +10,11 @@ import dagger.hilt.android.HiltAndroidApp
 @HiltAndroidApp
 class App: Application() {
 
+    companion object{
+        private const val maps_api_key = "79c40b92-de66-40c0-a8da-7dcb6a446f03"
+    }
     override fun onCreate() {
         super.onCreate()
-        MapKitFactory.setApiKey("79c40b92-de66-40c0-a8da-7dcb6a446f03")
+        MapKitFactory.setApiKey(maps_api_key)
     }
 }
