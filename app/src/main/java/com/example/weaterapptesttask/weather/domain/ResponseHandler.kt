@@ -1,4 +1,4 @@
-package com.example.weaterapptesttask.domain
+package com.example.weaterapptesttask.weather.domain
 
 import com.example.weaterapptesttask.R
 import com.example.weaterapptesttask.core.ManagerResource
@@ -14,7 +14,7 @@ interface ResponseHandler {
 
     class Base @Inject constructor(
         private val managerResource: ManagerResource
-    ): ResponseHandler{
+    ): ResponseHandler {
 
         override fun handle(e: Exception):String = managerResource.getString(
             when(e){

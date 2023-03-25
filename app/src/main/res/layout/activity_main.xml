@@ -5,24 +5,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".presentation.MainActivity">
+    tools:context=".weather.presentation.MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/tv"
+        android:padding="10dp"
         android:text="@string/click_str"
         android:layout_gravity="top"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:textSize="@dimen/text_body1"
+        android:textColor="@color/black"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
     <com.yandex.mapkit.mapview.MapView
         android:id="@+id/map"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clickable="true"
+        app:layout_constraintTop_toBottomOf="@+id/tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
          />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bottom_sheet"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="350dp"
         android:background="@drawable/bottom_sheet_state"
         android:clickable="true"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
@@ -63,46 +82,10 @@
             app:tabIndicatorFullWidth="true"
             app:tabIndicatorColor="@color/purple"
             >
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="06:00"
-                />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="23.03\n07:00"
-
-                />
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="08:00"
-                />
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="09:00"
-                />
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="10:00"
-                />
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="11:00"
-                />
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="12:00"
-                />
         </com.google.android.material.tabs.TabLayout>
 
-        <include layout="@layout/weather_fragment"
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -111,6 +94,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             />
 
+
         <ProgressBar
             android:id="@+id/progressBar"
             android:layout_marginTop="20dp"
@@ -118,47 +102,17 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/divider"
+            app:layout_constraintTop_toBottomOf="@id/tab_layout"
             android:visibility="gone"
             />
 
-        <ImageView
+        <include
+            android:id="@+id/error"
             android:visibility="gone"
-            android:id="@+id/no_internet_iv"
-            android:layout_marginTop="20dp"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            layout="@layout/error_layout"
             app:layout_constraintTop_toBottomOf="@id/progressBar"
-            android:src="@drawable/no_internet"
-            />
-
-        <TextView
-            android:visibility="gone"
-            android:layout_marginTop="20dp"
-            android:layout_marginHorizontal="20dp"
-            android:id="@+id/error_tv"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/no_internet_iv"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_body1"
-            android:text="These codes can be used in HTML, CSS, and other web design languages to apply the desired color to an element."
-            />
-
-        <ImageButton
-            android:visibility="gone"
-            android:id="@+id/no_retry_iv"
-            android:layout_marginTop="20dp"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/error_tv"
-            android:background="@drawable/retry"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

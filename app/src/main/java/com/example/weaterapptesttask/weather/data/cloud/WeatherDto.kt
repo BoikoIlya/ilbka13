@@ -1,22 +1,25 @@
-package com.example.weaterapptesttask.data.cloud
+package com.example.weaterapptesttask.weather.data.cloud
 
 import android.annotation.SuppressLint
 import com.example.weaterapptesttask.core.WeatherCodeHandler
-import com.example.weaterapptesttask.domain.WeatherData
-import com.example.weaterapptesttask.domain.WeatherItem
+import com.example.weaterapptesttask.weather.domain.WeatherData
+import com.example.weaterapptesttask.weather.domain.WeatherItem
 import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.*
 import javax.inject.Inject
 
 data class WeatherDto(
-   private val elevation: Double,
-   private val generationtime_ms: Double,
-   private val hourly: Hourly,
-   private val hourly_units: HourlyUnits,
-   private val latitude: Double,
-   private val longitude: Double,
-   private val timezone: String,
-   private val timezone_abbreviation: String,
-   private val utc_offset_seconds: Int,
+    private val elevation: Double,
+    private val generationtime_ms: Double,
+    private val hourly: Hourly,
+    private val hourly_units: HourlyUnits,
+    private val latitude: Double,
+    private val longitude: Double,
+    private val timezone: String,
+    private val timezone_abbreviation: String,
+    private val utc_offset_seconds: Int,
 ){
 
     fun <T>map(mapper: Mapper<T>): T = mapper.map(
@@ -48,7 +51,7 @@ data class WeatherDto(
 
     class ToWeatherDataMapper @Inject constructor(
         private val handler: WeatherCodeHandler,
-    ): Mapper<WeatherData>{
+    ): Mapper<WeatherData> {
         @SuppressLint("SimpleDateFormat")
         override fun map(
             elevation: Double,
@@ -63,14 +66,15 @@ data class WeatherDto(
         ): WeatherData {
             val list = emptyList<WeatherItem>().toMutableList()
             var i = 0
-            val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm")
-            val outputFormat = SimpleDateFormat("dd.MM HH:mm")
+            val inputFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm")
+            val outputFormat = DateTimeFormatter.ofPattern("dd.MM\nHH:mm")
 
             hourly.time.forEach{time->
 
                 val date = inputFormat.parse(time)
 
-                list.add(WeatherItem(
+                list.add(
+                    WeatherItem(
                     outputFormat.format(date),
                     hourly.temperature_2m[i].toString()+hourly_units.temperature_2m,
                     hourly.windspeed_10m[i].toString()+" "+hourly_units.windspeed_10m,
@@ -80,7 +84,8 @@ data class WeatherDto(
                 )
                 i++
             }
-            return WeatherData("$latitude, $longitude", list)
+            val index = hourly.time.indexOf(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:00")))
+            return WeatherData("$latitude, $longitude", list, index)
         }
 
     }

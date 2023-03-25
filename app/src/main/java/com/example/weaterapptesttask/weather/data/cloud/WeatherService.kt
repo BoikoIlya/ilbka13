@@ -1,4 +1,4 @@
-package com.example.weaterapptesttask.data.cloud
+package com.example.weaterapptesttask.weather.data.cloud
 
 import retrofit2.http.GET
 import retrofit2.http.Query

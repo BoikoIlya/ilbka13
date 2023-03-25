@@ -1,4 +1,4 @@
-package com.example.weaterapptesttask.di
+package com.example.weaterapptesttask.weather.di
 
 import android.app.Application
 import com.yandex.mapkit.MapKitFactory

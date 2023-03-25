@@ -1,4 +1,4 @@
-package com.example.weaterapptesttask.data.cloud
+package com.example.weaterapptesttask.weather.data.cloud
 
 data class Hourly(
     val temperature_2m: List<Double>,

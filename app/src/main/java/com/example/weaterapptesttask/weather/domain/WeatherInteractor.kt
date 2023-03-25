@@ -1,6 +1,6 @@
-package com.example.weaterapptesttask.domain
+package com.example.weaterapptesttask.weather.domain
 
-import com.example.weaterapptesttask.data.WeatherRepository
+import com.example.weaterapptesttask.weather.data.WeatherRepository
 import javax.inject.Inject
 
 /**
@@ -16,14 +16,14 @@ interface WeatherInteractor {
     class Base @Inject constructor(
         private val repository: WeatherRepository,
         private val handler: ResponseHandler,
-    ): WeatherInteractor{
+    ): WeatherInteractor {
 
         override suspend fun fetchData(latitude: Double, longitude: Double): WeatherResult =
             try {
                 val result = repository.fetchData(latitude, longitude)
-                 WeatherResult.Success(result)
+                WeatherResult.Success(result)
             }catch (e: Exception){
-                 WeatherResult.Failure(handler.handle(e))
+                WeatherResult.Failure(handler.handle(e))
             }
     }
 
