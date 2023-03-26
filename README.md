@@ -4,6 +4,8 @@ APK: https://drive.google.com/drive/folders/1l08EOcDZPZ5HTMjHcuZUeRR2SIfGhXfF?us
 
 Stack:
 - Unit tests Junit
+- MVVM
+- CleanArchitecture
 - Kotlin
 - XML
 - Retrofit
