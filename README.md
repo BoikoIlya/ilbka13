@@ -12,7 +12,7 @@ Stack:
 - State flow
 - Yandex MapKit
 
-In this app you can click on map then app will take coordinates, set mark, and make api request based on this coordinates. After response will be handled and show on the ui in bottom sheet. You will see tab layout with dates and hours and viewPager. ViewPager pages will contain all necessary data. Code is covered by Unit tests using Junit.
+Code is covered by Unit tests using Junit. Api: https://open-meteo.com/en/docs#api-documentation  In this app you can click on map then app will take coordinates, set mark, and make api request based on this coordinates. After response will be handled and show on the ui in bottom sheet. You will see tab layout with dates and hours and viewPager. ViewPager pages will contain all necessary data. 
 
 ## ScreenShots:
 
